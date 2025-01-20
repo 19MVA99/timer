@@ -3,6 +3,7 @@
     padding: 0;
     box-sizing: border-box;
     font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    overflow: hidden;
 }
 
 .container {
@@ -16,7 +17,7 @@
 
 .timer_body {
     width: 400px;
-    height: 600px;
+    height: 800px;
     padding: 15px;
     background: #e3edf7;
     border-radius: 25px;
