@@ -12,30 +12,64 @@
         <div class="timer_body">
  <!------------------------BUTTON START/STOP------------------------------------>  
             <div class="control">
-                <input type="button" class="start_stop" value="START" onclick="watchStart()">
-                <input type="button" class="start_stop" value="STOP" onclick="watchStop()">
+                <input type="button" id="start"  class="start" value="START" onclick="watchStart()">
+                <input type="button" id="stop" class="stop" value="STOP" onclick="watchStop()">
                 <input type="button" class="reset" value="RESET" onclick="watchReset()">
             </div>
             <div class="time_display">  
-                <h1 id="displayTime" class="display_new">00:00:00</h1>
-         </div>
- <!-----------------------------DISPLAY TIMER-------------------------------------->  
-           
- <!-----------------------------TABLE TIMER-------------------------------------->  
-            <div class="line">TABLE</div>
-                       
+                <h1 id="displayTime" class="display_new"></h1>
+            </div> 
+                <div class="variants">
+                    <p id="text_variants" class="text_variants">100</p>
+                    <p id="text_variants" class="text_variants">200</p>
+                    <p id="text_variants" class="text_variants">300</p>
+                    <p id="text_variants" class="text_variants">400</p>
+                    <p id="text_variants" class="text_variants">500</p>
+                </div>
+            
+            <div class="table">
+                <div class="result"></div>
+            </div>
+
         </div>
 
     </div>
 </body>
 </html>
 
+
+ <!-----------------------------SCRIPT-------------------------------------->  
+ <!-----------------------------SCRIPT-------------------------------------->  
+ <!-----------------------------SCRIPT-------------------------------------->  
+ <!-----------------------------SCRIPT-------------------------------------->  
+ <!-----------------------------SCRIPT-------------------------------------->  
 <script>
 
     let [seconds, minutes, hours] = [0, 0, 0];
     let displayTime = document.getElementById("displayTime");
     let timer = null;
 
+
+    var btn = document.getElementById("start");
+    btn.addEventListener("click", function() {
+        this.classList.add("start_active");
+    });
+
+    var btn = document.getElementById("stop");
+    btn.addEventListener("click", function() {
+        this.classList.add("stop_active");
+    });
+    
+    var btn = document.getElementById("text_variants");
+    btn.addEventListener("click", function() {
+        this.classList.add("text_variants_active");
+    });
+
+
+
+    
+
+      
     function stopwatch(){
         seconds++;
         if(seconds == 60){
@@ -51,7 +85,7 @@
             let m = minutes < 10 ? "0" + minutes : minutes;
             let s = seconds < 10 ? "0" + seconds : seconds;
 
-displayTime.innerHTML = h +":"+ m +":"+ s;
+displayTime.innerHTML = h +" : "+ m +" : "+ s;
 }
 
 function watchStart(){
@@ -66,11 +100,13 @@ function watchStop(){
     clearInterval(timer);
 }
 
-function watchReset(){
-    clearInterval(timer);
-    let [seconds, minutes, hours] = [0, 0, 0];
-    displayTime.innerHTML = "00:00:00";
-}
+function watchReset() {
+            seconds = 0; 
+            minutes = 0; 
+            hours = 0; 
+            displayTime.innerHTML = "00:00:00"
+            clearInterval(timer)
+        }
 
 </script>
 
